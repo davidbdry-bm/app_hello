@@ -1,22 +1,22 @@
-# Installation
+# app_hello — Boilerplate app BoondManager
 
-Copy all files inside your web directory accessible from your **App's URL**.
- 
-cf. https://support.boondmanager.com/hc/fr/articles/209465426-Create-your-App
+Boilerplate pour créer une app BoondManager.
 
-# Set application's config
-- Fill the following variables inside `init.php`:
+---
 
-|  variable | description | example | mandatory |
-| --- | --- | --- | --- |
-| **{{APP_KEY}}** |  Your **App's Key** | `0000aaaa0000aaaa0000` | Yes |
-| **{{APP_CODE}}** | Your **Installation's Code** | `` | No |
+## Implémentations
 
-Please note that the Installation code is not mandatory and is NOT the App Code from the App's configuration page. 
-You can set an arbitrary code in the init.php file, which will act like a password to allow a user to install the app. This code will then be entered by the user when installing the app in Boondmanager.
+### [`/PHP`](./PHP)
+Implémentation officielle PHP avec `signedRequest` (JWT HS256).  
+→ Voir [PHP/README.md](./PHP/README.md)
 
-cf. https://support.boondmanager.com/hc/fr/articles/209465426-Create-your-App
+### [`/TS-express`](./TS-express)
+Implémentation TypeScript / Node.js avec OAuth2 (Authorization Code Flow).  
+→ Voir [TS-express/README.md](./TS-express/README.md)
 
-cf. https://support.boondmanager.com/hc/fr/articles/209465446-Install-your-App
+---
 
+## Ressources
 
+- [Créer une app BoondManager](https://support.boondmanager.com/hc/fr/articles/209465426-Create-your-App)
+- [Installer une app BoondManager](https://support.boondmanager.com/hc/fr/articles/209465446-Install-your-App)
