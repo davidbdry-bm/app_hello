@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>App Hello</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 14px;
+      color: #333;
+      padding: 16px;
+      background: transparent;
+    }
+    h1 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+    p  { margin-bottom: 8px; }
+    hr { border: none; border-top: 1px solid #eee; margin: 12px 0; }
+    a  { color: #0066cc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <div id="app">Chargement...</div>
+
+  <script type="module">
+    // Doit correspondre à APP_BASE dans .env (vide = pas de préfixe)
+    const BASE = '';
+
+    fetch(`${BASE}/auth/me`, { credentials: 'include' })
+      .then(r => {
+        if (r.status === 401) {
+          window.location.href = `${BASE}/auth/login`;
+          return null;
+        }
+        return r.json();
+      })
+      .then(user => {
+        if (!user) return;
+        return fetch(`${BASE}/data/me`, { credentials: 'include' })
+          .then(r => r.json())
+          .then(data => {
+            if (data.error) {
+              document.getElementById('app').innerHTML =
+                `<p style="color:red">${data.error}</p>`;
+              return;
+            }
+            document.getElementById('app').innerHTML = `
+              <h1>${data.function ?? ''}</h1>
+              <p>Hello ${data.firstName} ${data.lastName}</p>
+              <hr/>
+              <a href="${BASE}/auth/logout">Se déconnecter</a>
+            `;
+          });
+      })
+      .catch(() => {
+        document.getElementById('app').innerHTML =
+          '<p style="color:red">Erreur de connexion au serveur</p>';
+      });
+  </script>
+
+</body>
+</html>
