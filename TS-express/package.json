@@ -1,0 +1,25 @@
+{
+  "name": "app_hello",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "tsx watch server/index.ts",
+    "build": "tsc",
+    "start": "node dist/server/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.19.0",
+    "express-session": "^1.19.0",
+    "passport": "^0.7.0",
+    "passport-oauth2": "^1.8.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/express-session": "^1.18.2",
+    "@types/node": "^20",
+    "@types/passport": "^1.0.17",
+    "@types/passport-oauth2": "^1.8.0",
+    "tsx": "^4",
+    "typescript": "^5"
+  }
+}
